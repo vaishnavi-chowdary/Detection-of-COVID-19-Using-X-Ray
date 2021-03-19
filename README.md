@@ -1,15 +1,8 @@
 # DETECTION OF COVID-19 USING X-RAY
 
-## COVID-19 image data collection ([🎬 video about the project](https://www.youtube.com/watch?v=ineWmqfelEQ))
-
-Project Summary: To build a public open dataset of chest X-ray and CT images of patients which are positive or suspected of COVID-19 or other viral and bacterial pneumonias ([MERS](https://en.wikipedia.org/wiki/Middle_East_respiratory_syndrome), [SARS](https://en.wikipedia.org/wiki/Severe_acute_respiratory_syndrome), and [ARDS](https://en.wikipedia.org/wiki/Acute_respiratory_distress_syndrome).). Data will be collected from public sources as well as through indirect collection from hospitals and physicians. 
+Project Summary: To build a public open dataset of chest X-ray and CT images of patients which are positive or suspected of COVID-19 or other viral and bacterial pneumonias . Data is collected from public sources as well as through indirect collection from hospitals and physicians. 
 
 ## View current [images](images) and [metadata](metadata.csv) and [a dataloader example](https://colab.research.google.com/github/vaishnavi-chowdary/Detection-of-COVID-19-Using-X-Ray/blob/master/COVID_19_Dataset_Test.ipynb)
-
-The labels are arranged in a hierarchy:
-
-<img width=300 src="docs/hierarchy.jpg"/>
-
 
 Current stats of PA, AP, and AP Supine views. Labels 0=No or 1=Yes. Data loader is [here](https://github.com/mlmed/torchxrayvision/blob/master/torchxrayvision/datasets.py#L867)
 ``` 
@@ -57,32 +50,17 @@ COVID19_Dataset num_samples=173 views=['AP Supine']
 
  ```
  
-## Annotations
-
-[Lung Bounding Boxes](https://github.com/GeneralBlockchain/covid-19-chest-xray-lung-bounding-boxes-dataset) and [Chest X-ray Segmentation](https://github.com/GeneralBlockchain/covid-19-chest-xray-segmentations-dataset) (license: CC BY 4.0) contributed by [General Blockchain, Inc.](https://github.com/GeneralBlockchain)
-
-[Pneumonia severity scores for 94 images](annotations/covid-severity-scores.csv) (license: CC BY-SA) from the paper [Predicting COVID-19 Pneumonia Severity on Chest X-ray with Deep Learning](http://arxiv.org/abs/2005.11856)
-
-[Generated Lung Segmentations](annotations/lungVAE-masks) (license: CC BY-SA) from the paper [Lung Segmentation from Chest X-rays using Variational Data Imputation](https://arxiv.org/abs/2005.10052)
-
-[Brixia score for 192 images](https://github.com/BrixIA/Brixia-score-COVID-19) (license: CC BY-NC-SA) from the paper [End-to-end learning for semiquantitative rating of COVID-19 severity on Chest X-rays](https://arxiv.org/abs/2006.04603)
-
-[Lung and other segmentations for 517 images](https://github.com/v7labs/covid-19-xray-dataset/tree/master/annotations) (license: CC BY) in COCO and raster formats by [v7labs](https://github.com/v7labs/covid-19-xray-dataset)
-
-
 There is a searchable database of COVID-19 papers [here](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov), and a non-searchable one (requires download) [here](https://pages.semanticscholar.org/coronavirus-research).
  
- 
+- See [SCHEMA.md](SCHEMA.md) for more information on the metadata schema.
 
- - See [SCHEMA.md](SCHEMA.md) for more information on the metadata schema.
-
-*Formats:* For chest X-ray dcm, jpg, or png are preferred. For CT nifti (in gzip format) is preferred but also dcms. Please contact with any questions.
+*Formats:* For chest X-ray dcm, jpg, or png are used. 
 
 ## Background Information
 
 In the context of a COVID-19 pandemic, we want to improve prognostic predictions to triage and manage patient care. Data is the first step to developing any diagnostic/prognostic tool. While there exist large public datasets of more typical chest X-rays from the NIH [Wang 2017], Spain [Bustos 2019], Stanford [Irvin 2019], MIT [Johnson 2019] and Indiana University [Demner-Fushman 2016], there is no collection of COVID-19 chest X-rays or CT scans designed to be used for computational analysis.
 
-The 2019 novel coronavirus (COVID-19) presents several unique features [Fang, 2020](https://pubs.rsna.org/doi/10.1148/radiol.2020200432) and [Ai 2020](https://pubs.rsna.org/doi/10.1148/radiol.2020200642). While the diagnosis is confirmed using polymerase chain reaction (PCR), infected patients with pneumonia may present on chest X-ray and computed tomography (CT) images with a pattern that is only moderately characteristic for the human eye [Ng, 2020](https://pubs.rsna.org/doi/10.1148/ryct.2020200034). In late January, a Chinese team published a paper detailing the clinical and paraclinical features of COVID-19. They reported that patients present abnormalities in chest CT images with most having bilateral involvement [Huang 2020](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext). Bilateral multiple lobular and subsegmental areas of consolidation constitute the typical findings in chest CT images of intensive care unit (ICU) patients on admission [Huang 2020](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext). In comparison, non-ICU patients show bilateral ground-glass opacity and subsegmental areas of consolidation in their chest CT images [Huang 2020](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext). In these patients, later chest CT images display bilateral ground-glass opacity with resolved consolidation [Huang 2020](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext). 
+The 2019 novel coronavirus (COVID-19) presents several unique features. While the diagnosis is confirmed using polymerase chain reaction (PCR), infected patients with pneumonia may present on chest X-ray and computed tomography (CT) images with a pattern that is only moderately characteristic for the human eye . In late January, a Chinese team published a paper detailing the clinical and paraclinical features of COVID-19. They reported that patients present abnormalities in chest CT images with most having bilateral involvement [Huang 2020](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext).  
 
 
 ## Motive
@@ -94,6 +72,9 @@ The tasks are as follows using chest X-ray or CT (preference for X-ray) as input
 - Healthy vs Pneumonia (prototype already implemented [Chester](https://mlmed.org/tools/xray/) with ~74% AUC, validation study [here](https://arxiv.org/abs/2002.02497))
 
 - Prognostic/severity predictions (survival, need for intubation, need for supplemental oxygen)
+
+## COVID-19 image data collection
+(https://www.youtube.com/watch?v=ineWmqfelEQ))
 
 # Motivation
  CODING BLOCKS(Detecting COVID-19 from X-Ray| Training a Convolutional Neural Network | Deep Learning)
